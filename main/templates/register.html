@@ -1,0 +1,82 @@
+{% include "index.html" %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registation page</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container" style="padding-top: 0px; margin: 10px auto 0;">
+        <h2>New User From</h2>
+        <div class="form-container">
+
+
+        <form class="row g-3" action="" method="">
+             {% comment %} {% csrf_token %} {% endcomment %}
+            {{form}}
+            <div class="col-md-6">
+                 <label for="inputName" class="form-label">Name</label>
+                 <input type="text" name="name" class="form-control" id="inputEmail4"  placeholder="Name">
+            </div>
+            <div class="col-md-6">
+                <label for="inputFamily" class="form-label">Password</label>
+                <input type="text"  name="family" class="form-control" id="inputPassword4" placeholder="Family">
+            </div>
+            <div class="col-md-6">
+                <label for="inputFamily" class="form-label">Conform Password</label>
+                <input type="text"  name="family" class="form-control" id="inputPassword4" placeholder="Family">
+            </div>
+            {% comment %} <div class="col-12">
+                 <label for="inputAddress" class="form-label">Address</label>
+                 <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address">
+            </div> {% endcomment %}
+
+  {% comment %} <div class="col-md-6">
+    <label for="inputFamily" class="form-label">Phone</label>
+    <input type="text"  name="phone" class="form-control" id="inputPassword4" placeholder="Phone">
+  </div> {% endcomment %}
+  
+  {% comment %} <div class="col-md-6">
+  <label for="inputType" class="form-label">Type</label>
+    <select  name="btype" id="inputState" class="form-select">
+      <option selected>Select...</option>
+      <option>Baba</option>
+      <option  >Baba Family</option>
+    </select>
+  </div> {% endcomment %}
+  {% comment %} <div class="col-md-6">
+    <label for="inputState" class="form-label">Gotra</label>
+    <select id="inputState" name="gotra" class="form-select">
+      <option selected>Select...</option>
+      {% for result in GotraData %}
+      <option>{{result.gotra_name}}</option>
+   
+      {% endfor %}
+
+
+    </select>
+ 
+  </div> {% endcomment %}
+ 
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-warning">Submit</button>
+    
+  </div>
+</form>
+          
+
+        </div>
+
+    </div>
+</body>
+
+</html>

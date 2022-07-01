@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+  
+    font-size: 14px;
+}
+
+.container{
+    /* background-color: #fff; */
+    
+   
+    /* height: ; */
+    width: 700px;
+    padding: 25px;
+    padding-top: 0px;
+    margin: 10px auto 0;
+    border-top: 5px saddlebrown;
+    box-shadow: 0 0 7px 5px rgba(0,0,0,0.5);
+ 
+}
+
+.container h2{
+    font-size: 24px;
+    padding: 15px;
+    line-height: 24px;
+    text-align: center;
+
+}
+
+.ml{
+    margin-left: 172px;
+}
+.input-name{
+
+    width: 45%;
+    position: relative;
+    margin: 20px auto;
+}
+
+.user{
+padding: 8px 11px;
+}
+
+.name{
+    width: 45%;
+    padding: 8px 0 8px 8px;
+
+}
+
+.input_name span{
+    margin-left: 35px;
+}
+
+.email_text{
+   padding: 8px 0 8px 40px;
+   margin-left: 30px;
+    width: 90%;
+    position: relative;
+    margin: 5px auto;
+}
+
+.input_name i{
+    position: absolute;
+    font-size: 18px;
+    color: red;
+    border-right: 1px solid #cccccc;
+}
+.email{
+    padding: 8px;
+}
+.phone{
+    padding: 8px;
+}
+.calender{
+padding: 8px;
+}
+
+.key{
+    padding: 8px;
+}
+
+.email_text, .name {
+    border: 1px solid #cccccc;
+    outline: none;
+
+}
+
+.email-text:hover, .name:hover {
+   background-color: rgb(121, 114, 114);
+
+}
+
+.email-text:focus, .name:focus {
+    border: 1px solid blue;
+ 
+ }
+
+ .radio-btn{
+     margin-right: 4px;
+
+ }
+.select-text{
+    width: 45%;
+    display: inline-block;
+    height: 35px;
+    padding: 0px 15px;
+    cursor: pointer;
+    border:1px solid #867373 ;
+
+}
+
+.slect-text:hover, .slect-text:focus{
+    color: #383535;
+    background-color: aqua;
+    border-color: black;
+    outline: none;
+}
+
+.label{
+    margin-left: 24px;
+}
+.label-dob{
+    margin: 5px;
+}
+.label-age{
+    margin: 5px;
+    width: 30%;
+}
+.date-text{
+    width: 34%;
+    padding: 8px 0 8px 28px
+    
+}
+.dob-span{
+    margin: 0px;
+}.btn{
+    background-color: chocolate;
+}
+
+.age-text{
+    width: 35%;
+    margin: 5px;
+    padding: 8px 0 8px 40px;
+}
+
+
+.btn:hover{
+    background: rgb(228, 98, 12);
+}
+
+
+.slect-a{
+    width: 90%;
+    display: inline-block;
+    height: 35px;
+    padding: 0px 15px;
+    cursor: pointer;
+    border: 1px solid #867373;
+    margin-left: 27px;
+}
+
+@media (max-width: 480px){
+
+    .container{
+        width: 100%;
+        padding: 5px;
+    }
+    .input-name{
+        margin-bottom: 10px;
+    }
+    .name{
+        width: 100%;
+        padding: 8px 0 8px 40px;
+        margin-bottom: 10px;
+    }
+
+    .input-name span{
+        margin: 0;
+        padding: 0;
+    }
+    .form-container{
+        width: 100%;
+    }
+}
+
+
+.form-container_log{
+    /* background-color: aqua; */
+    text-align: center;
+}

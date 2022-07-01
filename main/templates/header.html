@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>BaBa Dham</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning my-12">
+      <a class="navbar-brand" href="/">BABADHAM</a>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        मास्टर
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% comment %} <li><a class="dropdown-item" href="{% url 'newbaba' %}">बाबा मास्टर</a></li> {% endcomment %}
+                      {% comment %} <li><a class="dropdown-item" href="{% url 'addvidhi' %}">विधि मास्टर</a></li> {% endcomment %}
+                      {% comment %} <li><a class="dropdown-item" href="{% url 'addgotra' %}">गौत्र मास्टर</a></li>   
+                                       {% endcomment %}
+                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#babaModal"> BABA </button></li>
+                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vidhiModal"> Vidhi </button></li>
+                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#gotraModal"> Gotra</button></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        राशिद
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newSlipModal"> NEW </button></li>
+                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#babaModal"> Edit </button></li>
+                    </ul>
+                  </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    रिपोर्ट
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">दैनिक संग्रह रिपोर्ट</a></li>
+                  <li><a class="dropdown-item" href="#">बाबा संग्रह रिपोर्ट</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          
+          </div>
+        </div>
+
+        
+              <ul class="navbar-nav mr-2">
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+                 
+                    
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">प्रोफ़ाइल</a></li>
+                      <li><a class="dropdown-item" href="#">पासवर्ड बदलें</a></li>
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">LogOut</a></li>                   
+                      
+                    </ul>
+
+
+      </li>
+      <button type="button" class="btn btn-success  ml-auto" data-toggle="modal" data-target="#signupModal">
+        CreateUser
+        </button>
+      </ul>
+      </div>
+      <button type="button" class="btn btn-success  ml-auto" data-toggle="modal" data-target="#signupModal">
+        CreateUser
+        </button>
+        
+{% else %}
+  <!-- Button to  trigger Login modal -->
+<button type="button" class="btn btn-success  ml-auto" data-toggle="modal" data-target="#loginModal">
+Login
+</button>
+
+
+{% endif %}
+         
+          
+          
+        </div>
+
+    </nav>
+
+   
+<!-- SignUp Modal -->
+ <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/signup" method='post'>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username">
+  </div>
+
+  <div class="form-group">
+    <label for="pass1">Choose a password</label>
+    <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password">
+  </div>
+  <div class="form-group">
+    <label for="pass2">Confirm Password</label>
+    <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again">
+  </div>
+ 
+
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BaBa Modal -->
+<div class="modal fade" id="babaModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">Baba Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/newbaba" method='post'>
+          <div class="col-md-12">
+            <label for="inputName" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="inputEmail4"  placeholder="Name">
+       </div>
+       <div class="col-md-12">
+           <label for="inputFamily" class="form-label">Family</label>
+           <input type="text"  name="family" class="form-control" id="inputPassword4" placeholder="Family">
+       </div>
+       <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address">
+       </div>
+
+<div class="col-md-12">
+<label for="inputFamily" class="form-label">Phone</label>
+<input type="text"  name="phone" class="form-control" id="inputPassword4" placeholder="Phone">
+</div>
+
+<div class="col-md-6">
+<label for="inputState" class="form-label">Gotra</label>
+<select id="inputState" name="gotra" class="form-select">
+ <option selected>Select...</option>
+ {% for result in GotraData %}
+ <option>{{result.gotra_name}}</option>
+
+ {% endfor %}
+
+
+</select>
+
+</div>
+ 
+
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary my-2">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Gotra Modal -->
+<div class="modal fade" id="gotraModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">Add Gotra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/addgotra" method='post'>
+  <div class="form-group">
+    <label for="username">Gotra</label>
+    <input type="text" class="form-control" id="username" name="username" placeholder="Gotra">
+  </div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- New Slip Modal -->
+<div class="modal fade" id="newSlipModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">New Slip</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/newslip" method='post'>
+          <div class="col-md-12">
+            <label for="inputName" class="form-label">Mobile No.</label>
+            <input type="text" name="mobile" class="form-control" id="inputEmail4"  placeholder="Mobile No.">
+          </div>
+          <div class="col-md-12">
+            <label for="inputFamily" class="form-label">Jajman</label>
+            <input type="text"  name="name" class="form-control" id="inputPassword4" placeholder="Jajman">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address">
+          </div>
+          
+          <div class="col-md-4">
+          <label for="inputType" class="form-label">Vidhi</label>
+            <select id="inputState" class="form-select" name="vidhi">
+              <option selected>Select...</option>
+              {% for result in WorkData %}
+              <option value="{{result.id}}">{{result.work_name}}</option>
+           
+              {% endfor %}
+            
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Gotra</label>
+            <select id="inputState" class="form-select" name="gotra">
+              <option selected>Select...</option>
+              {% for result in GotraData %}
+              <option value="{{result.id}}">{{result.gotra_name}}</option>
+           
+              {% endfor %}
+                
+            </select>
+         
+          </div>
+        
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Baba Ka Nam</label>
+            <input type="text" name="bname" class="form-control" id="inputCity"  placeholder="BaBa Ka Nam">
+          </div>
+          
+          <div class="col-md-4">
+            <label for="inputZip" class="form-label">Rashi</label>
+            <input type="text" name="amount" class="form-control" id="inputZip"  placeholder="Rashi">
+          </div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Vidhi Modal -->
+<div class="modal fade" id="vidhiModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">Add Vidhi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/addvidhi" method='post'>
+  <div class="form-group">
+    <label for="username">Vidhi</label>
+    <input type="text" class="form-control" id="username" name="vidhi" placeholder="Gotra">
+  </div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="POST">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="loginusername" name="username" placeholder="Choose a unique username">
+  </div>
+  <div class="form-group">
+    <label for="pass">Enter your password </label>
+    <input type="password" class="form-control" id="pass" name="password" placeholder="Enter your password ">
+  </div>
+  {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+
+
+<!-- test Modal -->
+
+
+      
+ <div class="modal fade" id="gotraModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="gotraModal">Add Gotra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action= "/addgotra" method='POST'>
+              <div class="form-group">
+                <label for="username">Gotra</label>
+                <input type="text" class="form-control" id="username" name="name" placeholder="Gotra">
+              </div>
+              <div class="modal-footer">
+                    <!-- {% csrf_token %} -->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+     
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>

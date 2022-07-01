@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+  <div class="container">
+  <h2>Add Gotra</h2>
+    <div class="form-container">
+
+
+      <form class="row g-3"  action="" method="POST">
+        {% csrf_token %}
+        <div class="col-md-6 ml">
+          <label for="inputName" class="form-label">Gotra</label>
+          <input type="text" name="gotra" class="form-control" id="inputEmail4" placeholder="Gotra">
+        </div>
+        <div class="col-12">
+          <button type="submit" style = "margin-left: 170px;" class="btn btn-warning">Add</button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="gotraModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gotraModal">Add Gotra</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action= "/signup" method='post'>
+                <div class="form-group">
+                  <label for="username">Gotra</label>
+                  <input type="text" class="form-control" id="username" name="username" placeholder="Gotra">
+                </div>
+                <div class="modal-footer">
+                      <!-- {% csrf_token %} -->
+                      <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+       
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock  %}

@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="container">
+  <h2>Add Vidhi</h2>
+    <div class="form-container">
+
+
+      <form class="row g-3" action="" method="POST">
+        {% csrf_token %}
+        <div class="col-md-6 ml">
+          <label for="inputName" class="form-label">Vidhi</label>
+          <input type="text" name="vidhi" class="form-control" id="inputEmail4" placeholder="Vidhi" require>
+        </div>
+
+       
+          
+        
+
+
+        <div class="col-12">
+          <button type="submit" style = "margin-left: 170px;" class="btn btn-warning">Add</button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+  {% endblock %}

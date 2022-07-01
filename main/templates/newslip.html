@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container" style="padding-top: 0px; margin: 10px auto 0;">
+        <h2>New slip From</h2>
+        <div class="form-container">
+
+  <form class="row g-3" action="" method="POST">
+    {% csrf_token %}
+  <div class="col-md-6">
+    <label for="inputName" class="form-label">Mobile No.</label>
+    <input type="text" name="mobile" class="form-control" id="inputEmail4"  placeholder="Mobile No.">
+  </div>
+  <div class="col-md-6">
+    <label for="inputFamily" class="form-label">Jajman</label>
+    <input type="text"  name="name" class="form-control" id="inputPassword4" placeholder="Jajman">
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address">
+  </div>
+  
+  <div class="col-md-6">
+  <label for="inputType" class="form-label">Vidhi</label>
+    <select id="inputState" class="form-select" name="vidhi">
+      <option selected>Select...</option>
+      {% for result in WorkData %}
+      <option value="{{result.id}}">{{result.work_name}}</option>
+   
+      {% endfor %}
+    
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="inputState" class="form-label">Gotra</label>
+    <select id="inputState" class="form-select" name="gotra">
+      <option selected>Select...</option>
+      {% for result in GotraData %}
+      <option value="{{result.id}}">{{result.gotra_name}}</option>
+   
+      {% endfor %}
+        
+    </select>
+ 
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">Baba Ka Nam</label>
+    <input type="text" name="bname" class="form-control" id="inputCity"  placeholder="BaBa Ka Nam">
+  </div>
+  
+  <div class="col-md-4">
+    <label for="inputZip" class="form-label">Rashi</label>
+    <input type="text" name="amount" class="form-control" id="inputZip"  placeholder="Rashi">
+  </div>
+ 
+
+  <div class="col-6">
+    <button type="submit" class="btn btn-warning">Submit</button>
+    <!-- <button  class="btn btn-warning">Print</button> -->
+  </div>
+  
+</form>
+          
+
+        </div>
+
+    </div>
+
+{% endblock body %}
