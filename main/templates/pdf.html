@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <link rel="stylesheet" href="/static/css/_pdfstyle.css">
+
+
+  <style>
+  
+
+    .inner-dotted-border {
+      /* width: 750px; */
+      margin: 100px 50px 0px 60px;
+    
+    }
+
+    .certification {
+      font-size: 50px;
+      font-weight: bold;
+      color: #FFA500;
+    }
+
+    .certify {
+      font-size: 25px;
+      line-height: 1.6;
+    }
+
+    .name {
+      font-size: 30px;
+      color: green;
+    }
+
+    .fs-30 {
+      font-size: 30px;
+    }
+
+    .fs-20 {
+      font-size: 20px;
+    }
+    .tae{
+        margin-left: 290px;
+    }
+  </style>
+  <title>invoice</title>
+</head>
+
+<body>
+
+  <div class="outer-border">
+    <div class="inner-dotted-border">
+      <!-- <span class="certification">पंडा धर्मरक्षिका सभा ( रजि० ) </span> -->
+      <!-- <br><span class="namep"><b>बाबा वेधनाथ धाम देवघर 814112 ( झारखंड )</b></span><br /> -->
+      <br>
+
+
+      <span class="certify" style="margin: 15px">क्रमांक <span class="fs-30">23443</span></span><span class="certify" style="margin: 15px">दिनांक <span class="fs-30">23-03-2019</span></span><span class="certify" style="margin: 15px">समय <span class="fs-30">23:10</span></span><br><br>
+      <span class="certify">श्री श्री बाबा वेधनाथ धाम क्षेत्र मे शृगार पूजन हेतु श्री Rajesh गोत्र काश्यप पता  Dhanbad से रुपए 501 भूयसी दक्षिणा के रूप मे प्राप्त किया ।</span>
+      
+      <span class="certify"></span> <br /><br />
+      <span class="fs-30">अनुष्ठाकर्ता श्री RjRaj</span> <br />
+      <span class="fs-30 tae">प्राप्तकर्ता Admin </span> <br /><br />
+
+    
+
+    </div>
+  </div>
+  <!-- <button onclick="myfun('pt')" class="btn btn-primary mt-3">Get Bill</button> -->
+  <!-- <img src="img/temp.jpeg" alt=""> -->
+  <a href="" onClick="window.print();">Print</a>
+</body>
+
+</html>
+
+
+
+
+<script type="text/javascript">
+  function myfun(pa) {
+    var bk = document.body.innerHTML;
+    var dv = document.getElementById(pa).innerHTML;
+    document.body.innerHTML = dv;
+    window.print();
+  }
+
+</script>

@@ -39,12 +39,14 @@ def newslip(request):
         print(client_name)
         slipData = SlipData(client_name=client_name, address=address, phone=phone, gotra=gotra, work_type=work_type, amount=amount, user_name=user_name )
         slipData.save()
-    displaygotra=GotraData.objects.all()
-    displayvidhi=WorkData.objects.all()
+        return redirect('home')
+    else:
+        return HttpResponse("404 - Not found")
+    # displaygotra=GotraData.objects.all()
+    # displayvidhi=WorkData.objects.all()
 
 
-    return render(request,'newslip.html',{'GotraData':displaygotra, 'WorkData':displayvidhi})
-
+    # return render(request,'newslip.html',{'GotraData':displaygotra, 'WorkData':displayvidhi})
 
 def newbaba(request):
     if request.method == 'POST':
@@ -52,16 +54,15 @@ def newbaba(request):
         address = request.POST['address']
         phone = request.POST['phone']
         gotra = request.POST['gotra']
-        # type = request.POST['btype']
-        remarks = request.POST['family']
-        print(account_name)
-        babaData = Customerdata(account_name=account_name, address=address, phone=phone, gotra=gotra, remarks=remarks )
+        type = request.POST['family']
+        print(account_name,address,phone,gotra,type)
+        babaData = Customerdata(account_name=account_name, address=address, phone=phone, gotra=gotra, type=type )
         babaData.save()
         return redirect('home')
     else:
         return HttpResponse("404 - Not found")
-    # displaygotra=GotraData.objects.all()
-    # return render(request,'newbaba.html',{'GotraData':displaygotra})
+
+
 
 def addvidhi(request):
     if request.method == 'POST':
@@ -76,7 +77,7 @@ def addvidhi(request):
 def addgotra(request):
     if request.method == 'POST':
         # work_name = request.POST['name']
-        gotra_name = request.POST['name']
+        gotra_name = request.POST['gotra']
         print(gotra_name)
         gotraData = GotraData(gotra_name=gotra_name)
         gotraData.save()
@@ -129,3 +130,8 @@ def userCreate(request):
 
 
     # return render(request,'register.html', context)
+
+def invoice(request):
+    displayslip=SlipData.objects.all()
+    return render(request,'pdf.html',{'GotraData':displayslip})
+    # return HttpResponse('logout')

@@ -42,7 +42,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#newSlipModal"> NEW </button></li>
-                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#babaModal"> Edit </button></li>
+                      <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editSlipModal"> Edit </button></li>
                     </ul>
                   </li>
               <li class="nav-item dropdown">
@@ -80,9 +80,7 @@
         </button>
       </ul>
       </div>
-      <button type="button" class="btn btn-success  ml-auto" data-toggle="modal" data-target="#signupModal">
-        CreateUser
-        </button>
+ 
         
 {% else %}
   <!-- Button to  trigger Login modal -->
@@ -208,7 +206,7 @@ Login
         <form action= "/addgotra" method='post'>
   <div class="form-group">
     <label for="username">Gotra</label>
-    <input type="text" class="form-control" id="username" name="username" placeholder="Gotra">
+    <input type="text" class="form-control" id="username" name="gotra" placeholder="Gotra">
   </div>
         {% csrf_token %}
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -220,6 +218,74 @@ Login
   </div>
 </div>
 
+
+<!-- New Slip Modal -->
+<div class="modal fade" id="editSlipModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalTitle">Edit Slip</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action= "/newslip" method='post'>
+          <div class="col-md-12">
+            <label for="inputName" class="form-label">Mobile No.</label>
+            <input type="text" name="mobile" class="form-control" id="inputEmail4"  placeholder="Mobile No.">
+          </div>
+          <div class="col-md-12">
+            <label for="inputFamily" class="form-label">Jajman</label>
+            <input type="text"  name="name" class="form-control" id="inputPassword4" placeholder="Jajman">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Address">
+          </div>
+          
+          <div class="col-md-4">
+          <label for="inputType" class="form-label">Vidhi</label>
+            <select id="inputState" class="form-select" name="vidhi">
+              <option selected>Select...</option>
+              {% for result in WorkData %}
+              <option value="{{result.id}}">{{result.work_name}}</option>
+           
+              {% endfor %}
+            
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Gotra</label>
+            <select id="inputState" class="form-select" name="gotra">
+              <option selected>Select...</option>
+              {% for result in GotraData %}
+              <option value="{{result.id}}">{{result.gotra_name}}</option>
+           
+              {% endfor %}
+                
+            </select>
+         
+          </div>
+        
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Baba Ka Nam</label>
+            <input type="text" name="bname" class="form-control" id="inputCity"  placeholder="BaBa Ka Nam">
+          </div>
+          
+          <div class="col-md-4">
+            <label for="inputZip" class="form-label">Rashi</label>
+            <input type="text" name="amount" class="form-control" id="inputZip"  placeholder="Rashi">
+          </div>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- New Slip Modal -->
 <div class="modal fade" id="newSlipModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
@@ -353,7 +419,7 @@ Login
         <h5 class="modal-title" id="gotraModal">Add Gotra</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body"> 
           <form action= "/addgotra" method='POST'>
               <div class="form-group">
                 <label for="username">Gotra</label>
